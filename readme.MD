@@ -50,3 +50,9 @@ y reinstalar de nuevo NPM:
 npm install
 ```
 
+Luego, instalar axios:
+
+```node
+npm install axios
+```
+
