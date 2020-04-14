@@ -8,7 +8,7 @@ const Prueba = () => <div>hola</div>
 const App = (props) => (
 	<BrowserRouter>
 		<Menu />
-		<div id="margen">
+		<div className="margen">
 			<Route exact path='/' component={Usuarios} />
 			<Route exact path='/tareas' component={Prueba} />
 		</div>
