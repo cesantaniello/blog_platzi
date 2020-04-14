@@ -56,3 +56,9 @@ Luego, instalar axios:
 npm install axios
 ```
 
+Después, instalar react-router-dom:
+
+```node
+npm install react-router-dom
+```
+
