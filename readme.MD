@@ -62,3 +62,9 @@ Después, instalar react-router-dom:
 npm install react-router-dom
 ```
 
+También se debe instalar los paquetes redux react-redux:
+
+```node
+npm install redux react-redux
+```
+
