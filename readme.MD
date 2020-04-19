@@ -68,3 +68,8 @@ También se debe instalar los paquetes redux react-redux:
 npm install redux react-redux
 ```
 
+Seguido a esto se deben instalar el paquete redux-thunk:
+
+```node
+npm install redux-thunk
+```
