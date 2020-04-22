@@ -8,7 +8,7 @@ import * as usuariosActions from '../../actions/usuariosActions';
 
 class Usuarios extends Component {
 
-	componentDidMount() {
+	async componentDidMount() {
 		this.props.traerTodos();
 	}
 
@@ -18,10 +18,10 @@ class Usuarios extends Component {
 		}
 
 		if (this.props.error) {
-			return <Fatal mensaje={this.props.error}/>;
+			return <Fatal mensaje={ this.props.error } />;
 		}
 
-		return <Tabla />;
+		return <Tabla />
 	};
 
 	render() {
