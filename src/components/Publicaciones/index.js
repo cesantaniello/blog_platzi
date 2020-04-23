@@ -51,11 +51,43 @@ class Publicaciones extends Component {
 		);
 	};
 
+	ponerPublicaciones = () => {
+		const {
+			usuariosReducer,
+			usuariosReducer: { usuarios },
+			publicacionesReducer,
+			publicacionesReducer: { publicaciones },
+			match: { params: { key } }
+		} = this.props;
+
+		if(!usuarios.length) return;
+		if(usuariosReducer.error) return;
+
+		if(publicacionesReducer.cargando) {
+			return <Spinner />;
+		}
+
+		if(publicacionesReducer.error) {
+			return <Fatal mensaje={publicacionesReducer.error} />;
+		}
+		if(!publicaciones.length) return;
+		if(!('publicaciones_key' in usuarios[key])) return;
+
+		const { publicaciones_key } = usuarios[key];
+
+		return publicaciones[publicaciones_key].map((publicacion) =>
+			<div className='pub_titulo'>
+				<h2>{publicacion.title}</h2>
+				<h3>{publicacion.body}</h3>
+			</div>
+		)
+	};
+
 	render() {
 		return (
 			<div>
 				{ this.ponerUsuario() }
-				{ this.props.match.params.key }
+				{ this.ponerPublicaciones() }
 			</div>
 		);
 	}
