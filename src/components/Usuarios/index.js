@@ -9,7 +9,7 @@ import * as usuariosActions from '../../actions/usuariosActions';
 class Usuarios extends Component {
 
 	componentDidMount() {
-		if (!this.props.usuarios){
+		if (!this.props.usuarios.length) {
 			this.props.traerTodos();
 		}
 	}

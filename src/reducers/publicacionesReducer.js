@@ -1,4 +1,8 @@
-import { TRAER_POR_USUARIO, CARGANDO, ERROR } from '../types/publicacionesTypes';
+import {
+	CARGANDO,
+	ERROR,
+	TRAER_POR_USUARIO
+} from '../types/publicacionesTypes';
 
 const INITIAL_STATE = {
 	publicaciones: [],
