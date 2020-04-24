@@ -1,5 +1,5 @@
 import {
-	CARGANDO,ERROR, ACTUALIZAR, COM_CARGANDO, COM_ERROR
+	CARGANDO,ERROR, ACTUALIZAR, COM_CARGANDO, COM_ERROR, COM_ACTUALIZAR
 } from '../types/publicacionesTypes';
 
 const INITIAL_STATE = {
@@ -25,6 +25,14 @@ export default (state = INITIAL_STATE, action) => {
 
 		case ERROR:
 			return { ...state, error: action.payload, cargando: false };
+
+		case COM_ACTUALIZAR:
+			return {
+				...state,
+				publicaciones: action.payload,
+				com_cargando: false,
+				com_error: ''
+			};	
 			
 		case COM_CARGANDO:
 			return { ...state, com_cargando: true };
