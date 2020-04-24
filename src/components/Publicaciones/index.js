@@ -84,7 +84,8 @@ class Publicaciones extends Component {
 	};
 
 	mostrarInfo = (publicaciones, pub_key) => (
-		publicaciones.map((publicacion, com_key) => (
+		publicaciones.map(
+			(publicacion, com_key) => (
 			<div className='pub_titulo' key={publicacion.id}
 				onClick={
 					()=>this.mostrarComentarios(pub_key, com_key, publicacion.comentarios)
@@ -92,7 +93,8 @@ class Publicaciones extends Component {
 				<h2>{publicacion.title}</h2>
 				<h3>{publicacion.body}</h3>
 				{
-					(publicacion.abierto) ? <Comentarios /> : ''
+					(publicacion.abierto) ? <Comentarios comentarios={publicacion.
+					comentarios}/> : ''
 				}
 			</div>
 		))
