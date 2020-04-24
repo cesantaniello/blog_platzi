@@ -8,8 +8,11 @@ import * as usuariosActions from '../../actions/usuariosActions';
 import * as publicacionesActions from '../../actions/publicacionesActions';
 
 const { traerTodos: usuariosTraerTodos } = usuariosActions;
-const { traerPorUsuario: publicacionesTraerPorUsuario, 
-	abrirCerrar, traerComentarios } = publicacionesActions;
+const {
+	traerPorUsuario: publicacionesTraerPorUsuario,
+	abrirCerrar,
+	traerComentarios
+} = publicacionesActions;
 
 class Publicaciones extends Component {
 
@@ -62,21 +65,18 @@ class Publicaciones extends Component {
 			match: { params: { key } }
 		} = this.props;
 
-		if(!usuarios.length) return;
-		if(usuariosReducer.error) return;
-
-		if(publicacionesReducer.cargando) {
+		if (!usuarios.length) return;
+		if (usuariosReducer.error) return;
+		if (publicacionesReducer.cargando) {
 			return <Spinner />;
 		}
-
-		if(publicacionesReducer.error) {
-			return <Fatal mensaje={publicacionesReducer.error} />;
+		if (publicacionesReducer.error) {
+			return <Fatal mensaje={ publicacionesReducer.error } />
 		}
-		if(!publicaciones.length) return;
-		if(!('publicaciones_key' in usuarios[key])) return;
+		if (!publicaciones.length) return;
+		if (!('publicaciones_key' in usuarios[key])) return;
 
 		const { publicaciones_key } = usuarios[key];
-
 		return this.mostrarInfo(
 			publicaciones[publicaciones_key],
 			publicaciones_key
@@ -84,26 +84,35 @@ class Publicaciones extends Component {
 	};
 
 	mostrarInfo = (publicaciones, pub_key) => (
-		publicaciones.map(
-			(publicacion, com_key) => (
-			<div className='pub_titulo' key={publicacion.id}
+		publicaciones.map((publicacion, com_key) => (
+			<div
+				key={publicacion.id}
+				className='pub_titulo'
 				onClick={
-					()=>this.mostrarComentarios(pub_key, com_key, publicacion.comentarios)
-					}>
-				<h2>{publicacion.title}</h2>
-				<h3>{publicacion.body}</h3>
+					() => this.mostrarComentarios(pub_key, com_key, publicacion.comentarios)
+				}
+			>
+				<h2>
+					{ publicacion.title }
+				</h2>
+				<h3>
+					{ publicacion.body }
+				</h3>
 				{
-					(publicacion.abierto) ? <Comentarios comentarios={publicacion.
-					comentarios} /> : ''
+					(publicacion.abierto) ?
+						<Comentarios
+							comentarios={ publicacion.comentarios }
+						/>
+						: ''
 				}
 			</div>
 		))
 	);
 
 	mostrarComentarios = (pub_key, com_key, comentarios) => {
-		this.props.abrirCerrar(pub_key, com_key);
-		if (!comentarios.length){
-			this.props.traerComentarios(pub_key, com_key);
+		this.props.abrirCerrar(pub_key, com_key)
+		if (!comentarios.length) {
+			this.props.traerComentarios(pub_key, com_key)
 		}
 	};
 
@@ -122,8 +131,10 @@ const mapStateToProps = ({ usuariosReducer, publicacionesReducer }) => {
 };
 
 const mapDispatchToProps = {
-	usuariosTraerTodos, publicacionesTraerPorUsuario, 
-	abrirCerrar, traerComentarios
+	usuariosTraerTodos,
+	publicacionesTraerPorUsuario,
+	abrirCerrar,
+	traerComentarios
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Publicaciones);
