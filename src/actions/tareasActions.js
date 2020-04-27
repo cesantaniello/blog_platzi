@@ -1,13 +1,7 @@
 import axios from 'axios';
 import {
-	TRAER_TODAS,
-	CARGANDO,
-	ERROR,
-	CAMBIO_USUARIO,
-	CAMBIO_TITULO,
-	GUARDADA,
-	ACTUALIZAR
-} from '../types/tareasTypes';
+	TRAER_TODAS, CARGANDO, ERROR, CAMBIO_USUARIO, CAMBIO_TITULO, GUARDADA,
+	ACTUALIZAR, LIMPIAR} from '../types/tareasTypes';
 
 export const traerTodas = () => async (dispatch) => {
 	dispatch({
@@ -123,7 +117,6 @@ export const eliminar = (tar_id) => async (dispatch) => {
 
 	try {
 		const respuesta = await axios.delete(`https://jsonplaceholder.typicode.com/todos/${tar_id}`);
-		console.log(respuesta);
 		dispatch({
 			type: TRAER_TODAS,
 			payload: {} 
@@ -136,4 +129,10 @@ export const eliminar = (tar_id) => async (dispatch) => {
 			payload: 'Servicio no disponible.'
 		});
 	}
+}
+
+export const limpiarForma = () => (dispatch) => {
+	dispatch({
+		type: LIMPIAR
+	})
 }
