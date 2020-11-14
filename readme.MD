@@ -62,3 +62,14 @@ Después, instalar react-router-dom:
 npm install react-router-dom
 ```
 
+También se debe instalar los paquetes redux react-redux:
+
+```node
+npm install redux react-redux
+```
+
+Seguido a esto se deben instalar el paquete redux-thunk:
+
+```node
+npm install redux-thunk
+```
